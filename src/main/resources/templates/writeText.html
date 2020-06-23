@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--<link rel="stylesheet" type="text/css" href="Style.css" />-->
+        <title>WriteText</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
+            <a class="navbar-brand" style="color:black">Менеджер задач</a>
+        </nav>
+
+        <form>
+            <div class="form-group" style="padding: 10px">
+                <label for="writePole" id="zagolovok">Введите вашу задачу</label>
+                <div class="form-inline" id="vvod">
+
+                    <input type="text" class="form-control" id="writePole" placeholder="Введите текст"
+                           style="position: relative">
+                    <div id="butadd">
+                        <button type="button" class="btn btn-outline-dark">Подтвердить</button>
+                    </div>
+                    <div id="butdel">
+                        <button type="button" class="btn btn-outline-danger">Отменить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <style>
+            #vvod {
+                position: relative;
+                top: 0;
+            }
+            #butadd {
+                position: absolute;
+                left: 82.5%;
+            }
+            #butdel {
+                position: absolute;
+                left: 92.4%;
+            }
+            #writePole {
+                width: 82%;
+            }
+            #zagolovok {
+                font-size: 20px;
+                font-weight: 450;
+            }
+        </style>
+    </body>
+</html>
