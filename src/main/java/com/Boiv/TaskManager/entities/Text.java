@@ -1,12 +1,16 @@
 package com.Boiv.TaskManager.entities;
 
-public class AnyText {
+public class Text {
 
-    int id;
-    String stroka;
+    private int id;
+    private String stroka;
 
-    public AnyText(){
+    public Text(int id, String stroka) {
+        this.id = id;
+        this.stroka = stroka;
+    }
 
+    public Text() {
     }
 
     public int getId() {

@@ -17,34 +17,27 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
             <a class="navbar-brand" style="color:black">Менеджер задач</a>
         </nav>
-        <table class="table table-hover table-bordered">
+        <span th:if="${sometxt.size() == 0}">Задач нет
+            <br />
+            <a th:href="@{'writeText'}"><button type="button" class="btn btn-outline-dark">Добавить</button></a>
+        </span>
+        <table class="table table-hover table-bordered" th:if="${sometxt.size() != 0}" >
             <thead>
-            <tr>
-                <td class="strokaZag" style="font-weight: bold">Номер</td>
-                <th style="vertical-align: sub">Суть Задачи</th>
-                <th><button type="button" class="btn btn-outline-dark">Добавить</button></th>
-            </tr>
-            </thead>
-
+        <tr>
+            <td class="strokaZag" style="font-weight: bold">Номер</td>
+            <th style="vertical-align: sub">Суть Задачи</th>
+            <th><a th:href="@{'writeText'}"><button type="button" class="btn btn-outline-dark">Добавить</button></a></th>
+        </tr>
+        </thead>
             <tbody>
-            <tr>
-                <td class="strokaZag">1</td>
-                <td class="target">Сходить в магазин</td>
-                <td><button type="button" class="btn btn-outline-dark">Изменить</button></td>
-                <td><button type="button" class="btn btn-outline-danger" >Удалить</button></td>
+
+            <tr th:each="oneText: ${sometxt}">
+                <td class="strokaZag" th:text="${oneText.id}"></td>
+                <td class="target" th:text="${oneText.stroka}"></td>
+                <td><a th:href="@{'/changeText/' + ${oneText.id}}"><button type="button" class="btn btn-outline-dark">Изменить</button></a></td>
+                <td><a th:href="@{'text/textDelete/' + ${oneText.id}}"><button type="button" class="btn btn-outline-danger">Удалить</button></a></td>
             </tr>
-            <tr>
-                <td class="strokaZag">2</td>
-                <td class="target">Позвонить</td>
-                <td><button type="button" class="btn btn-outline-dark">Изменить</button></td>
-                <td><button type="button" class="btn btn-outline-danger" >Удалить</button></td>
-            </tr>
-            <tr>
-                <td class="strokaZag">3</td>
-                <td class="target">Сыграть</td>
-                <td><button type="button" class="btn btn-outline-dark">Изменить</button></td>
-                <td><button type="button" class="btn btn-outline-danger" >Удалить</button></td>
-            </tr>
+
             </tbody>
         </table>
         <style>
