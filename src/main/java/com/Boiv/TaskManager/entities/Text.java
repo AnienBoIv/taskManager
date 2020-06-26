@@ -1,11 +1,19 @@
 package com.Boiv.TaskManager.entities;
 
-public class Text {
+import javax.persistence.*;
 
-    private int id;
+@Entity
+@Table(name = "TASK_MANAGER")
+public class Text {
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "text")
     private String stroka;
 
-    public Text(int id, String stroka) {
+    public Text(Long id, String stroka) {
         this.id = id;
         this.stroka = stroka;
     }
@@ -13,11 +21,11 @@ public class Text {
     public Text() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -27,5 +35,13 @@ public class Text {
 
     public void setStroka(String stroka) {
         this.stroka = stroka;
+    }
+
+    @Override
+    public String toString() {
+        return  "Text{" +
+                "id=" + id +
+                ", stroka='" + stroka + '\'' +
+                '}';
     }
 }

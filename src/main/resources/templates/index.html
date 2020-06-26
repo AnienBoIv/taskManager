@@ -35,7 +35,7 @@
                 <td class="strokaZag" th:text="${oneText.id}"></td>
                 <td class="target" th:text="${oneText.stroka}"></td>
                 <td><a th:href="@{'/changeText/' + ${oneText.id}}"><button type="button" class="btn btn-outline-dark">Изменить</button></a></td>
-                <td><a th:href="@{'text/textDelete/' + ${oneText.id}}"><button type="button" class="btn btn-outline-danger">Удалить</button></a></td>
+                <td><a th:href="@{'/textDelete/' + ${oneText.id}}"><button type="button" class="btn btn-outline-danger">Удалить</button></a></td>
             </tr>
 
             </tbody>

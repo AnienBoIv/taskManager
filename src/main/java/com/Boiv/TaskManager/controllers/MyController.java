@@ -33,7 +33,7 @@ public class MyController {
         List<Text> allText = taskServ.getAllText();
         model.addAttribute("sometxt", allText);
         return "index";
-    }
+}
 
     @GetMapping("/writeText")
     public String addPage() {
@@ -41,15 +41,16 @@ public class MyController {
     }
 
     @GetMapping("/changeText/{id}")
-    public String changePage(Model model, @PathVariable("id") int id) {
+    public String changePage(Model model, @PathVariable("id") Long id) {
         Text someText = taskServ.getTextById(id);
         model.addAttribute("sometxt", someText);
         return "changeText";
     }
 
-    @GetMapping("text/textDelete/{id}")
-    public String deleteTextById(@PathVariable("id") int id) {
+    @GetMapping("/textDelete/{id}")
+    public String deleteTextById(@PathVariable("id") Long id) {
         taskServ.deleteTextById(id);
         return "redirect:/index";
     }
+
 }
