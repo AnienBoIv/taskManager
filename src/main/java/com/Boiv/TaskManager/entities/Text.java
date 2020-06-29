@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "TASK_MANAGER")
 public class Text {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
