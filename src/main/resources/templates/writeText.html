@@ -13,19 +13,19 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
             <a class="navbar-brand" style="color:black">Менеджер задач</a>
         </nav>
-        <form>
+        <form th:action="@{/writeText/addTask}" th:object="${Text}" method="post">
             <div class="form-group" style="padding: 10px">
                 <label for="writePole" id="zagolovok">Введите вашу задачу</label>
                 <div class="form-inline" id="vvod">
 
-                    <input type="text" class="form-control" id="writePole" placeholder="Введите текст"
+                    <input type="text" name="text_task" class="form-control" id="writePole" placeholder="Введите текст"
                            style="position: relative">
 
                     <div id="butadd">
-                        <button type="button" class="btn btn-outline-dark">Подтвердить</button>
+                        <button name="text_task" type="submit" class="btn btn-outline-dark">Подтвердить</button>
                     </div>
                     <div id="butdel">
-                        <button type="button" class="btn btn-outline-danger">Отменить</button>
+                        <a th:href="@{'index'}"><button type="button" class="btn btn-outline-danger">Отменить</button></a>
                     </div>
                 </div>
             </div>

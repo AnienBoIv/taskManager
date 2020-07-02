@@ -10,15 +10,19 @@ public class Text {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "text")
-    private String stroka;
-
-    public Text(Long id, String stroka) {
-        this.id = id;
-        this.stroka = stroka;
-    }
+    @Column(name = "text_task")
+    private String text_task;
 
     public Text() {
+    }
+
+    public Text(String text_task){
+        this.text_task = text_task;
+    }
+
+    public Text(Long id, String text_task) {
+        this.id = id;
+        this.text_task = text_task;
     }
 
     public Long getId() {
@@ -29,19 +33,12 @@ public class Text {
         this.id = id;
     }
 
-    public String getStroka() {
-        return stroka;
+    public String getText_task() {
+        return text_task;
     }
 
-    public void setStroka(String stroka) {
-        this.stroka = stroka;
+    public void setText_task(String text_task) {
+        this.text_task = text_task;
     }
 
-    @Override
-    public String toString() {
-        return  "Text{" +
-                "id=" + id +
-                ", stroka='" + stroka + '\'' +
-                '}';
-    }
 }

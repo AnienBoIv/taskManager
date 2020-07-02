@@ -13,15 +13,15 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
             <a class="navbar-brand" style="color:black">Менеджер задач</a>
         </nav>
-        <form>
+        <form th:object="${Text}" th:action="@{/changeText = ${sometxt.id}} " th:id="'/changeText' + ${sometxt.id}" method="post">
             <div class="form-group" style="padding: 10px">
-                <label for="writePole" id="zagolovok">Измените вашу задачу</label>
+                <label for="writePole" class="zagolovok">Измените вашу задачу</label>
                 <div class="form-inline" id="vvod">
 
-                    <input type="text" class="form-control" id="writePole" placeholder="Введите текст"
+                    <input name="change_task" type="text" class="form-control" id="writePole" placeholder="Введите текст"
                            style="position: relative">
                     <div id="butadd">
-                        <button type="button" class="btn btn-outline-dark">Подтвердить</button>
+                        <button type="submit" class="btn btn-outline-dark" name="change_task">Подтвердить</button>
                     </div>
                     <div id="butdel">
                         <button type="button" class="btn btn-outline-danger">Отменить</button>
@@ -29,6 +29,8 @@
                 </div>
             </div>
         </form>
+        <label class="zagolovok" style="margin-left: 1%">Текущая задача:</label>
+            <p th:text="${sometxt.text_task}" id="curretnText"></p>
         <style>
             #vvod {
                 position: relative;
@@ -45,9 +47,13 @@
             #writePole {
                 width: 82%;
             }
-            #zagolovok {
+            .zagolovok {
                 font-size: 20px;
                 font-weight: 400;
+            }
+            #curretnText {
+                font-size: 16.5px;
+                margin-left: 1%;
             }
         </style>
     </body>

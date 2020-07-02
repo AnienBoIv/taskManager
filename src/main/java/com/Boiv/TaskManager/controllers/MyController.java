@@ -5,8 +5,7 @@ import com.Boiv.TaskManager.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,29 +27,61 @@ public class MyController {
         return "index";
     }*/
 
+// Main page with table
     @GetMapping("/index")
-    public String mainPage(Model model) {
+    public String mainTaskPage(Model model) {
         List<Text> allText = taskServ.getAllText();
-        model.addAttribute("sometxt", allText);
+        model.addAttribute("sometxt", allText );
         return "index";
 }
 
+// Page with writing the task
     @GetMapping("/writeText")
-    public String addPage() {
+    public String addTaskPage() {
         return "writeText";
     }
+// Action for add a new task
+    @PostMapping("/writeText/addTask")
+    public String fieldWrite( @ModelAttribute("text_task") String text_task ){
+        Text task = new Text(text_task);
+        taskServ.addTask(task);
+        return "redirect:/index";
+    }
 
+//    @PostMapping("/writeText/addTask")
+//    public String testField(Model model, @RequestParam String text_task){
+//        Text task = new Text(text_task);
+//        taskServ.addTask(task);
+//        return "redirect:/index";
+//    }
+
+// Page with changing the task
     @GetMapping("/changeText/{id}")
-    public String changePage(Model model, @PathVariable("id") Long id) {
+    public String changeTaskPage(Model model, @PathVariable("id") Long id) {
         Text someText = taskServ.getTextById(id);
         model.addAttribute("sometxt", someText);
         return "changeText";
     }
+// Action for changing task
+    // Doesn't work
+//    @PostMapping("/changeText/{id}/changeTask")
+//    public String updateCurrentTask(@ModelAttribute("changed_task") String changed_task, @PathVariable("id") Long id) {
+//        Text changedTask = new Text(id, changed_task);
+//        taskServ.updateTask(changedTask);
+//        return "redirect:/index";
+//    }
 
+    @PostMapping("/changeText/{id}")
+    public String updateCurrentTask(@RequestBody String changed_task, @PathVariable("id") Long id) {
+        Text changedTask = new Text(1L, changed_task);
+        taskServ.updateTask(changedTask);
+        return "redirect:/index";
+    }
+
+// Button for delete task from table
     @GetMapping("/textDelete/{id}")
     public String deleteTextById(@PathVariable("id") Long id) {
         taskServ.deleteTextById(id);
         return "redirect:/index";
     }
-
 }

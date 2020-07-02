@@ -28,4 +28,12 @@ public class TaskService {
     public void deleteTextById(Long id) {
         taskRepo.deleteById(id);
     }
+
+    public void addTask(Text text_task) {
+        taskRepo.save(text_task);
+    }
+
+    public void updateTask(Text task) {
+        taskRepo.save(task);
+    }
 }
