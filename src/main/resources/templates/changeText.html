@@ -13,15 +13,15 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
             <a class="navbar-brand" style="color:black">Менеджер задач</a>
         </nav>
-        <form th:object="${Text}" th:action="@{/changeText = ${sometxt.id}} " th:id="'/changeText' + ${sometxt.id}" method="post">
+        <form method="post" th:object="${Text}" th:action="@{/changeText/{orderId}/changeTask(orderId=${sometxt.id})}">
             <div class="form-group" style="padding: 10px">
                 <label for="writePole" class="zagolovok">Измените вашу задачу</label>
                 <div class="form-inline" id="vvod">
 
-                    <input name="change_task" type="text" class="form-control" id="writePole" placeholder="Введите текст"
+                    <input name="changed_task" type="text" class="form-control" id="writePole" placeholder="Введите текст"
                            style="position: relative">
                     <div id="butadd">
-                        <button type="submit" class="btn btn-outline-dark" name="change_task">Подтвердить</button>
+                        <button type="submit" class="btn btn-outline-dark" name="changed_task">Подтвердить</button>
                     </div>
                     <div id="butdel">
                         <button type="button" class="btn btn-outline-danger">Отменить</button>

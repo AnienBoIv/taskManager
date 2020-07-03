@@ -63,17 +63,9 @@ public class MyController {
         return "changeText";
     }
 // Action for changing task
-    // Doesn't work
-//    @PostMapping("/changeText/{id}/changeTask")
-//    public String updateCurrentTask(@ModelAttribute("changed_task") String changed_task, @PathVariable("id") Long id) {
-//        Text changedTask = new Text(id, changed_task);
-//        taskServ.updateTask(changedTask);
-//        return "redirect:/index";
-//    }
-
-    @PostMapping("/changeText/{id}")
-    public String updateCurrentTask(@RequestBody String changed_task, @PathVariable("id") Long id) {
-        Text changedTask = new Text(1L, changed_task);
+    @PostMapping("/changeText/{id}/changeTask")
+    public String updateCurrentTask(@ModelAttribute("changed_task") String changed_task, @PathVariable("id") Long id) {
+        Text changedTask = new Text(id, changed_task);
         taskServ.updateTask(changedTask);
         return "redirect:/index";
     }
