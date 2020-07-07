@@ -1,6 +1,6 @@
 package com.Boiv.TaskManager.services;
 
-import com.Boiv.TaskManager.entities.Text;
+import com.Boiv.TaskManager.entities.Task;
 import com.Boiv.TaskManager.repositories.TextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,23 +17,23 @@ public class TaskService {
         this.taskRepo = taskRepo;
     }
 
-    public Text getTextById(Long id) {
+    public Task getTaskById(Long id) {
        return taskRepo.getOne(id);
     }
 
-    public List<Text> getAllText() {
+    public List<Task> getAllTask() {
        return taskRepo.findAll();
     }
 
-    public void deleteTextById(Long id) {
+    public void deleteTaskById(Long id) {
         taskRepo.deleteById(id);
     }
 
-    public void addTask(Text text_task) {
-        taskRepo.save(text_task);
+    public void addTask(Task task) {
+        taskRepo.save(task);
     }
 
-    public void updateTask(Text task) {
+    public void updateTask(Task task) {
         taskRepo.save(task);
     }
 }

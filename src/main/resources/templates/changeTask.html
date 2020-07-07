@@ -8,50 +8,48 @@
                 integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
                 crossorigin="anonymous"></script>
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
-            <a class="navbar-brand" style="color:black">Менеджер задач</a>
+            <a class="navbar-brand" style="color:black">Task Manager</a>
         </nav>
-        <form method="post" th:object="${Text}" th:action="@{/changeText/{orderId}/changeTask(orderId=${sometxt.id})}">
+        <form method="post" th:object="${Task}" th:action="@{/changeTask/{orderId}/changeText(orderId=${taskById.id})}">
             <div class="form-group" style="padding: 10px">
-                <label for="writePole" class="zagolovok">Измените вашу задачу</label>
-                <div class="form-inline" id="vvod">
-
-                    <input name="changed_task" type="text" class="form-control" id="writePole" placeholder="Введите текст"
+                <label for="writeField" class="changeHeader">Change your task</label>
+                <div class="form-inline" id="entryField">
+                    <input name="taskChangeField" type="text" class="form-control" id="writeField" placeholder="Enter text"
                            style="position: relative">
-                    <div id="butadd">
-                        <button type="submit" class="btn btn-outline-dark" name="changed_task">Подтвердить</button>
+                    <div id="butAdd">
+                        <button type="submit" class="btn btn-outline-dark" name="taskChangeField">Confirm</button>
                     </div>
-                    <div id="butdel">
-                        <button type="button" class="btn btn-outline-danger">Отменить</button>
+                    <div id="butDel">
+                        <a th:href="@{'/index'}"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
                     </div>
                 </div>
             </div>
         </form>
-        <label class="zagolovok" style="margin-left: 1%">Текущая задача:</label>
-            <p th:text="${sometxt.text_task}" id="curretnText"></p>
+        <label class="changeHeader" style="margin-left: 1%">Current task:</label>
+            <p th:text="${taskById.task}" id="currentTask"></p>
         <style>
-            #vvod {
+            #entryField {
                 position: relative;
                 top: 0;
             }
-            #butadd {
+            #butAdd {
                 position: absolute;
-                left: 82.5%;
+                left: 87.6%;
             }
-            #butdel {
+            #butDel {
                 position: absolute;
-                left: 92.4%;
+                left: 94.6%;
             }
-            #writePole {
-                width: 82%;
+            #writeField {
+                width: 87%;
             }
-            .zagolovok {
+            .changeHeader {
                 font-size: 20px;
                 font-weight: 400;
             }
-            #curretnText {
+            #currentTask {
                 font-size: 16.5px;
                 margin-left: 1%;
             }

@@ -1,6 +1,6 @@
 package com.Boiv.TaskManager.controllers;
 
-import com.Boiv.TaskManager.entities.Text;
+import com.Boiv.TaskManager.entities.Task;
 import com.Boiv.TaskManager.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @Controller
 public class MyController {
-    // http://localhost:8525/app/index
 
     private TaskService taskServ;
 
@@ -20,60 +19,46 @@ public class MyController {
         this.taskServ = taskService;
     }
 
-    /*@GetMapping("/index/{id}")
-    public String mainPage(Model model, @PathVariable("id") int id) {
-        Text someText = taskServ.getTextById(id);
-        model.addAttribute("sometxt", someText);
-        return "index";
-    }*/
-
-// Main page with table
+// The main page with the task table
     @GetMapping("/index")
     public String mainTaskPage(Model model) {
-        List<Text> allText = taskServ.getAllText();
-        model.addAttribute("sometxt", allText );
+        List<Task> allTask = taskServ.getAllTask();
+        model.addAttribute("taskList", allTask);
         return "index";
-}
+    }
 
 // Page with writing the task
-    @GetMapping("/writeText")
+    @GetMapping("/writeTask")
     public String addTaskPage() {
-        return "writeText";
+        return "writeTask";
     }
-// Action for add a new task
-    @PostMapping("/writeText/addTask")
-    public String fieldWrite( @ModelAttribute("text_task") String text_task ){
-        Text task = new Text(text_task);
+// Action to add a task
+    @PostMapping("/writeTask/addTask")
+    public String fieldWrite( @ModelAttribute("addTaskField") String goalTask ){
+        Task task = new Task(goalTask);
         taskServ.addTask(task);
         return "redirect:/index";
     }
 
-//    @PostMapping("/writeText/addTask")
-//    public String testField(Model model, @RequestParam String text_task){
-//        Text task = new Text(text_task);
-//        taskServ.addTask(task);
-//        return "redirect:/index";
-//    }
-
 // Page with changing the task
-    @GetMapping("/changeText/{id}")
+    @GetMapping("/changeTask/{id}")
     public String changeTaskPage(Model model, @PathVariable("id") Long id) {
-        Text someText = taskServ.getTextById(id);
-        model.addAttribute("sometxt", someText);
-        return "changeText";
+        Task selectOneTask = taskServ.getTaskById(id);
+        model.addAttribute("taskById", selectOneTask);
+        return "changeTask";
     }
-// Action for changing task
-    @PostMapping("/changeText/{id}/changeTask")
-    public String updateCurrentTask(@ModelAttribute("changed_task") String changed_task, @PathVariable("id") Long id) {
-        Text changedTask = new Text(id, changed_task);
+// Action to change a task
+    @PostMapping("/changeTask/{id}/changeText")
+    public String updateCurrentTask(@ModelAttribute("taskChangeField") String changedGoalTask, @PathVariable("id") Long id) {
+        Task changedTask = new Task(id, changedGoalTask);
         taskServ.updateTask(changedTask);
         return "redirect:/index";
     }
 
-// Button for delete task from table
-    @GetMapping("/textDelete/{id}")
+// Action to delete a task
+    @GetMapping("/taskDelete/{id}")
     public String deleteTextById(@PathVariable("id") Long id) {
-        taskServ.deleteTextById(id);
+        taskServ.deleteTaskById(id);
         return "redirect:/index";
     }
 }

@@ -8,43 +8,42 @@
                 integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
                 crossorigin="anonymous"></script>
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightgrey">
-            <a class="navbar-brand" style="color:black">Менеджер задач</a>
+            <a class="navbar-brand" style="color:black">Task Manager</a>
         </nav>
-        <form th:action="@{/writeText/addTask}" th:object="${Text}" method="post">
+        <form th:action="@{/writeTask/addTask}" th:object="${Task}" method="post">
             <div class="form-group" style="padding: 10px">
-                <label for="writePole" id="zagolovok">Введите вашу задачу</label>
-                <div class="form-inline" id="vvod">
-                    <input type="text" name="text_task" class="form-control" id="writePole" placeholder="Введите текст"
+                <label for="writeField" id="addHeader">Enter your task</label>
+                <div class="form-inline" id="entryField">
+                    <input type="text" name="addTaskField" class="form-control" id="writeField" placeholder="Enter text"
                            style="position: relative">
-                    <div id="butadd">
-                        <button name="text_task" type="submit" class="btn btn-outline-dark">Подтвердить</button>
+                    <div id="butAdd">
+                        <button name="addTaskField" type="submit" class="btn btn-outline-dark">Confirm</button>
                     </div>
-                    <div id="butdel">
-                        <a th:href="@{'index'}"><button type="button" class="btn btn-outline-danger">Отменить</button></a>
+                    <div id="butDel">
+                        <a th:href="@{'/index'}"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
                     </div>
                 </div>
             </div>
         </form>
         <style>
-            #vvod {
+            #entryField {
                 position: relative;
                 top: 0;
             }
-            #butadd {
+            #butAdd {
                 position: absolute;
-                left: 82.5%;
+                left: 87.6%;
             }
-            #butdel {
+            #butDel {
                 position: absolute;
-                left: 92.4%;
+                left: 94.6%;
             }
-            #writePole {
-                width: 82%;
+            #writeField {
+                width: 87%;
             }
-            #zagolovok {
+            #addHeader {
                 font-size: 20px;
                 font-weight: 400;
             }
